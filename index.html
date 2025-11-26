@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-VQTBKP87MK"
+    ></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-VQTBKP87MK");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Scanford, a Robot-Powered Data Flywheel"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Scanford, a Robot-Powered Data Flywheel
+    </title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="./static/css/index.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+      google.load("jquery", "1.3.2");
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+          inlineMath: [['$', '$']]
+          },
+          "HTML-CSS": {
+          availableFonts: ["TeX", "STIX-Web", "Asana-Math", "Latin-Modern"], // Specify the desired font here
+          preferredFont: "STIX-Web", // Set the preferred font
+          webFont: "STIX-Web" // Set the web font to use
+          },
+      });
+    </script>
+    <script
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+      type="text/javascript"
+    ></script>
+  </head>
+  <body>
+
+<!-- Navbar -->
+<nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="#">
+      <strong>Robot-Powered Data Flywheel</strong>
+    </a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarMenu" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="#deployment">In the Wild Deployment</a>
+      <a class="navbar-item" href="#experiments">Experiments</a>
+      <a class="navbar-item" href="#prompts">VLM Prompts</a>
+      <a class="navbar-item" href="#citation">Citation</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer to prevent navbar overlap -->
+<div style="margin-top: 4.5rem;"></div>
+
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">
+                <span class="gradient-text">Robot-Powered Data Flywheels</span>: Deploying Robots in the Wild for Continual Data Collection and Foundation Model Adaptation
+              </h1>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a target="_blank" href="https://jenngrannen.com/">Jennifer Grannen<sup>1</sup>,</a>
+                  <a target="_blank" href="https://michelllepan.github.io">Michelle Pan<sup>1</sup>,</a>
+                  <a target="_blank" href="https://www.linkedin.com/in/kenneth-llontop">Kenneth Llontop<sup>1</sup>,</a>
+                  <a target="_blank" href="https://cherieho.com">Cherie Ho<sup>1</sup>,</a>
+                  <br>
+                  <a target="_blank" href="https://markzolotas.com/">Mark Zolotas<sup>2</sup>,</a>
+                  <a target="_blank" href="https://web.stanford.edu/~bohg/">Jeannette Bohg<sup>1</sup>,</a>
+                  <a target="_blank" href="https://dorsa.fyi/">Dorsa Sadigh<sup>1</sup></a>
+                </span>
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><sup>1</sup>Stanford University,</span>
+                <span class="author-block"><sup>2</sup>Toyota Research Institute</span>
+              </div>
+              <!-- <div class="is-size-5 publication-authors">Anonymized for review</div> -->
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/2511.19647"
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+
+                       <!-- TODO add Twitter link -->
+                  <!-- <span class="link-block">
+                    <a href="https://x.com/agiachris/status/1937670321458606310"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="fab fa-twitter"></i>
+                      </span>
+                      <span>Tweet</span>
+                    </a>
+                  </span> -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supplement Video Section -->
+    <section class="hero is-light is-small">
+      <div class="hero-body">
+        <!-- <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h3 class="title is-5">Supplement Video</h3>
+          </div>
+         </div> -->
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-four-fifths">
+              <video
+                poster=""
+                id="supplement-video"
+                autoplay
+                muted
+                loop
+                controls
+                playsinline
+                height="100%"
+              >
+                <source
+                  src="./media/scanford_website_vid.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TLDR Section -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <div class="columns is-vcentered is-centered shaded-panel" style="width: 90%;">
+              <h2 class="subtitle has-text-centered">
+                TLDR: During in the wild deployments, <strong><span class="text-green">Robot-Powered Data Flywheel</span></strong> robots perform useful tasks while simultaneously collecting domain-representative data that improves both <strong>domain-specific adaptation</strong> and <strong>domain-adjacent generalization</strong>.
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Abstract Section -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Foundation models have unlocked powerful zero-shot capabilities in vision and language, yet their reliance on internet-sourced pretraining data leaves them brittle in unstructured, real-world environments. The messy, real-world data encountered during deployment – such as low resolution images, occluded signs, or multilingual text – remains massively
+underrepresented in existing corpora. Robots, as embodied
+agents, are uniquely positioned to close this gap: they can
+act in physical environments to collect large-scale, real-world
+data that enriches foundation model training with precisely
+the examples current models lack. We introduce the Robot
+Powered Data Flywheel, a framework that transforms robots
+from consumers of foundation models into data generators.
+By deploying robots equipped with foundation models in the
+wild, we enable a virtuous cycle: robots perform useful tasks
+while simultaneously collecting domain-representative data that
+improves both domain-specific adaptation and domain-adjacent
+generalization. We instantiate this framework with Scanford, a mobile manipulator robot deployed
+in the East Asia Library for two weeks. Scanford autonomously
+scans shelves, identifies books using a vision-language model
+(VLM), and leverages the library catalog to automatically
+label images without human annotation. This deployment both
+aids librarians and produces a curated dataset to finetune the underlying VLM, improving performance on the domain-specific in-the-wild library setting and on domain-adjacent
+multilingual OCR benchmarks. Using data collected from 2103
+shelves, Scanford improves VLM performance on multilingual book
+identification from 32.0% to 71.8% and boosts domain-adjacent
+multilingual OCR from 24.8% to 46.6% (English) and 30.8%
+to 38.0% (Chinese), while saving an estimated 18.7 hours of
+human labor. These results highlight how robot-powered data
+flywheels can both reduce human effort in real deployments
+and unlock new pathways for continually adapting foundation
+models to the messy realities of the world. 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fig 1: Framework vs Instantiation -->
+    <section class="hero teaser">
+      <div class="container is-fullhd">
+        <div class="hero-body">
+          <div class="container">
+            <br/>
+            <div class="columns is-vcentered is-centered">
+              <div class="column is-four-fifths">
+                <h2 class="title is-3 has-text-centered">Robot-Powered Data Flywheel Framework</h2>
+                <video
+                  id="framework-gif"
+                  class="intro-video"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  height="100%"
+                  style="width: 80%;"
+                  data-src="./media/rpdf_bridge.mp4">
+                </video>
+                <div class="content has-text-justified" style="margin-top: 1em;">
+                  <p>
+                    Our Robot-Powered Data Flywheel framework (RPDF) bridges the gap between the curated internet data used to pre-train foundation models and real-world, messy deployment settings by deploying robots in the wild to collect domain-representative data.
+                  </p>
+                </div>
+                
+                <h2 class="title is-3 has-text-centered" style="margin-top: 2em;">Scanford Instantiation</h2>
+                <video
+                  id="library-gif"
+                  class="intro-video"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  height="100%"
+                  style="width: 85%;"
+                  data-src="./media/library_fig.mp4">
+                </video>
+                <div class="content has-text-justified" style="margin-top: 1em;">
+                  <p>
+                    We deploy <strong>Scanford</strong> in the East Asia Library for two weeks to scan books and assist inventory management [Left]. Scanford uses a mobile manipulator to collect pictures of bookshelves and leverages a VLM to identify the books in each image by title and call number. These labels are then compared with a library catalog database to curate a clean, accurate dataset for VLM fine-tuning [Right, Top]. Crucially, the autonomously gathered data improves not only the domain-specific performance on book identification, but also domain-adjacent generalizability of foundation models (multilingual OCR) [Right, Bottom]. Scanford simultaneously (1) saves 18.7 hours of manual scanning, (2) collects real-world book data, and (3) improves the very foundation model it relies on – enhancing its own performance on the library task while also strengthening the model’s broader multilingual OCR capabilities.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr>
+
+    <!-- In the Wild Deployment Section -->
+    <section class="section" id="deployment">
+      <div class="container is-fullhd">
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-3">In the Wild Deployment</h2>
+          </div>
+        </div>
+
+         <!-- Deployment Videos -->
+         <div class="columns is-centered">
+           <div class="column is-10">
+             <div class="carousel results-carousel">
+               <div class="item">
+                 <video controls autoplay muted loop style="width: 100%;">
+                   <source src="./media/deployment_vids/session1.mp4" type="video/mp4">
+                   Your browser does not support the video tag.
+                 </video>
+               </div>
+               <div class="item">
+                 <video controls autoplay muted loop style="width: 100%;">
+                   <source src="./media/deployment_vids/session2.mp4" type="video/mp4">
+                   Your browser does not support the video tag.
+                 </video>
+               </div>
+               <div class="item">
+                 <video controls autoplay muted loop style="width: 100%;">
+                   <source src="./media/deployment_vids/session3.mp4" type="video/mp4">
+                   Your browser does not support the video tag.
+                 </video>
+               </div>
+               <div class="item">
+                 <video controls autoplay muted loop style="width: 100%;">
+                   <source src="./media/deployment_vids/session6.mp4" type="video/mp4">
+                   Your browser does not support the video tag.
+                 </video>
+               </div>
+               <div class="item">
+                 <video controls autoplay muted loop style="width: 100%;">
+                   <source src="./media/deployment_vids/session9.mp4" type="video/mp4">
+                   Your browser does not support the video tag.
+                 </video>
+               </div>
+             </div>
+           </div>
+         </div>
+
+        <!-- Navigation Challenges -->
+        <div class="shaded-panel" style="background: white;">
+          <h4 class="title is-5"><font color='black'>East Asia Library Setting</font></h4>
+          <div class="content has-text-justified">
+            <p>
+              The East Asia Library is a large library with varied shelf heights, lengths, backgrounds, and lighting conditions. We consider the task of scanning bookshelves for inventory management, a time-consuming task for librarians.
+            </p>
+          </div>
+          <div class="columns is-centered">
+            <div class="column is-10">
+              <img src="./media/weekly_deployment.png" style="width: 100%;" alt="Navigation challenges visualization" />
+            </div>
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              We visualize a representative shelf from each deployment session to highlight the diversity of the library.            </p>
+          </div>
+        </div>
+
+        <!-- Book Reading Challenges -->
+        <div class="shaded-panel" style="background: white;">
+          <h4 class="title is-5"><font color='black'>Challenges with Reading Books</font></h4>
+
+          <div class="columns is-centered">
+            <div class="column is-10">
+              <img src="./media/book_challenges.png" style="width: 100%;" alt="Library image 1" />
+            </div>
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              Reading and identifying books in the wild is challenging due to damaged book labels, occlusions, and fading and aging on books -- these cases are often underrepresented in the curated, internet data used to pre-train foundation models. The East Asia Lbrary holds another challenge: all its books are in Chinese, Japanese, or Korean. Existing foundation models struggle with these languages due to the heavy bias towards English in internet data.
+              Scanford addresses these challenges by fine-tuning the VLM on real-world data collected from the East Asia Library using a mobile manipulator.
+            </p>
+          </div>
+        </div>
+
+        
+      </div>
+    </section>
+
+    <hr/>
+
+    <!-- Experiments Section -->
+    <section class="section" id="experiments">
+      <div class="container is-fullhd">
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-3">Experiments</h2>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-10">
+            <div class="content has-text-justified">
+              <p>
+                We evaluate <strong>Scanford</strong>, a Robot-Powered Data Flywheel system, for foundation model adaptation and generalization improvement through in-the-wild deployment, as well as its deployment efficacy.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adaptation Experiments -->
+        <div class="shaded-panel" style="background: white;">
+          <h3 class="title is-4"><font color='black'>Adaptation Experiments</font></h3>
+
+          <div class="content has-text-justified">
+            <p>
+              A key insight of our framework is that by deploying robots in the wild, we can collect domain-representative data that can fill the gaps missing from the curated, internet data used to pre-train foundation models. This data, in turn, can be used to improve the performance of foundation models on both domain-specific and domain-adjacent tasks.
+            </p>
+          </div>
+          
+          <h4 class="title is-5"><font color='black'>Domain-Specific Improvement</font></h4>
+          <div class="columns is-centered">
+            <div class="column is-6">
+              <img src="./media/domain_specific.png" style="width: 100%;" alt="Library image 1" />
+            </div>
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              Our experiments demonstrate significant improvements (<strong>+39.0%</strong>) in the domain-specific task of book identification through continuous learning and adaptation. The data flywheel approach enables the system to <em>autonomously</em> collect domain-representative data, leading to Scanford outperforming both pre-trained VLM baselines.
+            </p>
+          </div>
+
+          <h4 class="title is-5"><font color='black'>Domain-Adjacent Adaptation</font></h4>
+          <div class="content has-text-justified">
+            <p>
+              We evaluate the performance of the VLM on two domain-adjacent tasks: English and Chinese "difficult" OCR as classified by prior work (see examples below). These cases can contain severe occlusion, distortions, calligraphic fonts, and blur and thus are often cleaned out of internet data. However, these challenges cannot be ignored as they are prevalent in in the wild settings -- the RPDF framework proposes using robot deployments to address these final-mile perception challenges.
+            </p>
+          </div>
+
+          <!-- Side-by-side carousels for Difficult OCR (English vs Chinese) -->
+          <div class="columns is-centered">
+              <div class="column is-6">
+                <h4 class="title is-5 has-text-centered"><font color='black'>Difficult OCR Examples (English)</font></h4>
+                <div id="english-ocr-carousel" class="carousel results-carousel">
+                  <div class="item"><img src="./media/ood/english/005_BALLYS.jpg" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/12_03_5_par_ROCK.jpg" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/13_17_1_par_CENTER.jpg" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/14_13_2_par_THEATRE.jpg" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/16_06_0_par_BOOKSTORE.jpg" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/5099_1_SAW.png" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/Pict0004_1_par_NAILS.jpg" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/word_1045_JEANSWEAR.png" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/word_151_EXIT.png" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/word_1647_KITCHEN.png" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/word_342_DVISORY.png" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/word_418_TAGHeuer.png" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/word_549_LIMTED.png" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/word_644_place.png" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/word_675_chimney.png" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/word_825_billlie.png" style="width: 100%;" alt="English OCR example" /></div>
+                  <div class="item"><img src="./media/ood/english/word_990_14-17.png" style="width: 100%;" alt="English OCR example" /></div>
+                </div>
+              </div>
+            <div class="column is-6">
+              <h4 class="title is-5 has-text-centered"><font color='black'>Difficult OCR Examples (Chinese)</font></h4>
+              <div id="chinese-ocr-carousel" class="carousel results-carousel">
+                <div class="item"><img src="./media/ood/chinese/00409.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00410.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00411.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00412.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00413.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00414.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00415.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <!-- <div class="item"><img src="./media/ood/chinese/00416.png" style="width: 100%;" alt="Chinese OCR example" /></div> -->
+                <div class="item"><img src="./media/ood/chinese/00417.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00418.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00419.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00420.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00421.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00422.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00423.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00424.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00425.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+                <div class="item"><img src="./media/ood/chinese/00426.png" style="width: 100%;" alt="Chinese OCR example" /></div>
+              </div>
+            </div>
+          </div>
+          <div class="content has-text-justified" style="margin-top: 1em;">
+            <p>
+              We find that fine-tuning the VLM on real-world data collected by Scanford leads to significant improvements for both domain-adjacent tasks (English OCR: <strong>+21.8%</strong>, Chinese OCR: <strong>+7.2%</strong>). 
+            </p>
+          </div>
+          <div class="columns is-centered">
+            <div class="column is-10">
+              <img src="./media/domain_adjacent.png" style="width: 100%;" alt="Domain-adjacent results" />
+            </div>
+          </div>
+          <div class="content has-text-justified" style="margin-top: 1em;">
+            <p>
+              This highlights that the data collected by Scanford not only improves domain-specific performance, but can also improve the foundation model's generalization capabilities on domain-adjacent tasks. More broadly, this supports the insight that real-world data collected by our framework is capable of filling the domain gaps of the curated, internet data used to pre-train foundation models.
+            </p>
+          </div>
+        </div>
+          
+
+        <!-- Deployment Efficacy Results -->
+        <div class="shaded-panel" style="background: white;">
+          <h3 class="title is-4"><font color='black'>Deployment Efficacy Results</font></h3>
+          <div class="content has-text-justified">
+            <p>
+              Over two weeks, Scanford scanned a total of <strong>2103 bookshelves</strong>, saving a librarian-estimated <strong>18.7 hours</strong> of manual scanning. Scanford also averaged <strong>2.6</strong> human interventions per day over the course of its full deployment. 
+            </p>
+          </div>
+
+          <!-- Deployment Video -->
+          <div class="columns is-centered">
+            <div class="column is-10">
+              <video
+                id="deployment-gif"
+                class="intro-video"
+                autoplay
+                loop
+                muted
+                playsinline
+                height="100%"
+                style="width: 100%;"
+                data-src="./media/deployment_results.mp4">
+              </video>
+            </div>
+          </div>
+          <!-- <div class="content has-text-justified">
+            <p>
+              <strong>Caption:</strong> Results show performance across multiple shelves with estimated time savings for librarians. The system demonstrates consistent improvement in both accuracy and efficiency over time.
+            </p>
+          </div> -->
+          
+        </div>
+      </div>
+    </section>
+
+    <hr/>
+
+    <!-- Prompts Section -->
+    <section class="section" id="prompts">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-3">VLM Prompts</h2>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-10">
+            <div class="content has-text-justified">
+              <p>
+                We use the following prompts to evaluate the VLM's performance on the domain-specific and domain-adjacent tasks.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- In-Distribution Prompts -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h3 class="title is-4"><font color='black'>Domain-Specific Evaluation Prompts</font></h3>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="shaded-panel" style="background: white;">
+              <h4 class="title is-5"><font color='black'>Gemini Domain-Specific Prompt</font></h4>
+              <div class="content has-text-left">
+                <pre style="background: #f5f5f5; padding: 1em; border-radius: 4px; overflow-x: auto;">
+<code># Book Shelf Image Analysis Task
+## Current Image
+Image: [image]
+  
+## Task
+Please analyze the image and provide a label describing the books visible in this image. 
+  
+The label should include:
+- The title of the book visible on the spine
+- The call number of the book visible on the spine (usually at the bottom)
+Each label should include all the books facing the camera and each book should be separated by a semicolon. 
+To be clear, the formatting should be: title | call number; title | call number; title | call number; ...
+  
+Format your response as a clear, concise label that could be used for training machine learning models. Make sure you only output the books that are visible in the image.
+  
+## Label:</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-8">
+            <div class="shaded-panel" style="background: white;">
+              <h4 class="title is-5"><font color='black'>Qwen Domain-Specific Prompt</font></h4>
+              <div class="content has-text-left">
+                <pre style="background: #f5f5f5; padding: 1em; border-radius: 4px; overflow-x: auto;">
+<code>## Task
+Please analyze the image and provide a label describing the books visible in this subdivided image. 
+  
+The label should include:
+- The title of the book visible on the spine
+- The call number of the book visible on the spine (usually at the bottom)
+Each label should include all the books facing the camera and each book should be separated by a semicolon. 
+To be clear, the formatting should be: title | call number; title | call number; title | call number; ...
+  
+Format your response as a clear, concise label that could be used for training machine learning models. Make sure you only output the books that are visible in the image.
+[image]
+  
+## Label:</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Out-of-Distribution Prompts -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h3 class="title is-4"><font color='black'>Domain-Adjacent Evaluation Prompts</font></h3>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="shaded-panel" style="background: white;">
+              <h4 class="title is-5"><font color='black'>Gemini Domain-Adjacent Prompt</font></h4>
+              <div class="content has-text-left">
+                <pre style="background: #f5f5f5; padding: 1em; border-radius: 4px; overflow-x: auto;">
+<code>## Task
+Please analyze the image and provide a label with all the text visible exactly as it appears in the image. Only return plain text characters (e.g. no @ symbols).
+  
+## Label:</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-8">
+            <div class="shaded-panel" style="background: white;">
+              <h4 class="title is-5"><font color='black'>Qwen Domain-Adjacent Prompt</font></h4>
+              <div class="content has-text-left">
+                <pre style="background: #f5f5f5; padding: 1em; border-radius: 4px; overflow-x: auto;">
+<code>## Task 
+Please analyze the image and provide a label with all the text visible exactly as it appears in the image. 
+
+## Label:</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr/>
+
+    <!-- Citation Section -->
+    <section class="section" id="citation">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-3">Citation</h2>
+            <div class="content has-text-left">
+              <pre style="background: #f5f5f5; padding: 1em; border-radius: 4px; overflow-x: auto;">
+<code>@article{grannen2025scanford,
+  title   = {Robot-Powered Data Flywheels: Deploying Robots in the Wild for Continual Data Collection and Foundation Model Adaptation},
+  author  = {Jennifer Grannen and Michelle Pan and Kenneth Llontop and Cherie Ho and Mark Zolotas and Jeannette Bohg and Dorsa Sadigh},
+  year    = 2025,
+  journal = {arXiv preprint arXiv:2511.19647}
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </body>
+</html>
